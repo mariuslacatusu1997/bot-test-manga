@@ -1,4 +1,5 @@
 import { Telegraf } from 'telegraf'
+import { InlineKeyboardButton } from 'telegraf/typings/core/types/typegram'
 
 const bot = new Telegraf(process.env.BOT_TOKEN!)
 
@@ -32,12 +33,16 @@ bot.on('text', async (ctx) => {
     let response = [];
     if (objects.data.length > 0) {
         for (const item of objects.data) {
-            response.push(item.slugFolder);
+            response.push([item.slugFolder]);
         }
     }
-    ctx.telegram.answerInlineQuery('1', response);
+    ctx.reply('Risultato', {
+        reply_markup: {
+            inline_keyboard: response as InlineKeyboardButton[][]
+        }
+    })
     // Using context shortcut
-    ctx.reply(`Hello ${ctx.state.role}`)
+    // ctx.reply(`Hello ${ctx.state.role}`)
 })
 
 bot.on('callback_query', (ctx) => {

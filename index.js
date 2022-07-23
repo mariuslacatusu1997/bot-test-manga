@@ -36,12 +36,16 @@ bot.on('text', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     let response = [];
     if (objects.data.length > 0) {
         for (const item of objects.data) {
-            response.push(item.slugFolder);
+            response.push([item.slugFolder]);
         }
     }
-    ctx.telegram.answerInlineQuery('1', response);
+    ctx.reply('Risultato', {
+        reply_markup: {
+            inline_keyboard: response
+        }
+    });
     // Using context shortcut
-    ctx.reply(`Hello ${ctx.state.role}`);
+    // ctx.reply(`Hello ${ctx.state.role}`)
 }));
 bot.on('callback_query', (ctx) => {
     // Explicit usage
