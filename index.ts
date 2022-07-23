@@ -32,7 +32,7 @@ bot.on('callback_query', (ctx) => {
 })
 
 bot.on('inline_query', (ctx) => {
-    const result: any = []
+    const result: any = ['test', 'test1']
     // Explicit usage
     ctx.telegram.answerInlineQuery(ctx.inlineQuery.id, result)
 
