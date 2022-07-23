@@ -10,6 +10,11 @@ bot.command('quit', (ctx) => {
     ctx.leaveChat()
 })
 
+bot.start((ctx) => {
+    ctx.telegram.sendMessage(ctx.message.chat.id, `test bot`)
+    ctx.reply('Welcome')
+})
+
 bot.on('text', (ctx) => {
     // Explicit usage
     ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.state.role}`)
