@@ -36,14 +36,10 @@ bot.on('text', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     let response = [];
     if (objects.data.length > 0) {
         for (const item of objects.data) {
-            response.push([item.slugFolder]);
+            response.push(item.slugFolder);
         }
     }
-    ctx.reply('Risultato', {
-        reply_markup: {
-            inline_keyboard: response
-        }
-    });
+    yield ctx.reply(response.toString());
     // Using context shortcut
     // ctx.reply(`Hello ${ctx.state.role}`)
 }));

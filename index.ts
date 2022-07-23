@@ -33,14 +33,10 @@ bot.on('text', async (ctx) => {
     let response = [];
     if (objects.data.length > 0) {
         for (const item of objects.data) {
-            response.push([item.slugFolder]);
+            response.push(item.slugFolder);
         }
     }
-    ctx.reply('Risultato', {
-        reply_markup: {
-            inline_keyboard: response as InlineKeyboardButton[][]
-        }
-    })
+    await ctx.reply(response.toString());
     // Using context shortcut
     // ctx.reply(`Hello ${ctx.state.role}`)
 })
