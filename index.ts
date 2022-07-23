@@ -20,7 +20,7 @@ bot.on('text', async (ctx) => {
     // Explicit usage
     ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.message.text}`)
 
-    const request = await fetch('https://www.mangaworld.in/api/mangas/search?keyword=Berserk', {
+    const request = await fetch(`https://www.mangaworld.in/api/mangas/search?keyword=${ctx.message.text}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

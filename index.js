@@ -24,7 +24,7 @@ bot.start((ctx) => {
 bot.on('text', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     // Explicit usage
     ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.message.text}`);
-    const request = yield fetch('https://www.mangaworld.in/api/mangas/search?keyword=Berserk', {
+    const request = yield fetch(`https://www.mangaworld.in/api/mangas/search?keyword=${ctx.message.text}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
